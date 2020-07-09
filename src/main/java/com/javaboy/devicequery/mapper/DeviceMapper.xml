@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javaboy.devicequery.mapper.DeviceMapper">
+  <resultMap id="BaseResultMap" type="com.javaboy.devicequery.model.Device">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="assetNumber" jdbcType="VARCHAR" property="assetNumber" />
+    <result column="assetClass" jdbcType="VARCHAR" property="assetClass" />
+    <result column="assetName" jdbcType="VARCHAR" property="assetName" />
+    <result column="manuFacturer" jdbcType="VARCHAR" property="manuFacturer" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="buyTime" jdbcType="TIMESTAMP" property="buyTime" />
+    <result column="purchaseValue" jdbcType="INTEGER" property="purchaseValue" />
+    <result column="auditTime" jdbcType="VARCHAR" property="auditTime" />
+    <result column="nowUseLocation" jdbcType="VARCHAR" property="nowUseLocation" />
+    <result column="nowUser" jdbcType="VARCHAR" property="nowUser" />
+    <result column="startUseTime" jdbcType="VARCHAR" property="startUseTime" />
+    <result column="endUseTime" jdbcType="VARCHAR" property="endUseTime" />
+    <result column="usePlace" jdbcType="VARCHAR" property="usePlace" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uuid, assetNumber, assetClass, assetName, manuFacturer, model, buyTime, purchaseValue, 
+    auditTime, nowUseLocation, nowUser, startUseTime, endUseTime, usePlace, remark, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from device
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from device
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.javaboy.devicequery.model.Device">
+    insert into device (id, uuid, assetNumber, 
+      assetClass, assetName, manuFacturer, 
+      model, buyTime, purchaseValue, 
+      auditTime, nowUser,
+      startUseTime, endUseTime, usePlace, 
+      remark, updatetime)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{assetNumber,jdbcType=VARCHAR}, 
+      #{assetClass,jdbcType=VARCHAR}, #{assetName,jdbcType=VARCHAR}, #{manuFacturer,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{buyTime,jdbcType=TIMESTAMP}, #{purchaseValue,jdbcType=DOUBLE},
+      #{auditTime,jdbcType=VARCHAR},  #{nowUser,jdbcType=VARCHAR},
+      #{startUseTime,jdbcType=VARCHAR}, #{endUseTime,jdbcType=VARCHAR}, #{usePlace,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.javaboy.devicequery.model.Device">
+    insert into device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="assetNumber != null">
+        assetNumber,
+      </if>
+      <if test="assetClass != null">
+        assetClass,
+      </if>
+      <if test="assetName != null">
+        assetName,
+      </if>
+      <if test="manuFacturer != null">
+        manuFacturer,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="buyTime != null">
+        buyTime,
+      </if>
+      <if test="purchaseValue != null">
+        purchaseValue,
+      </if>
+      <if test="auditTime != null">
+        auditTime,
+      </if>
+      <if test="nowUseLocation != null">
+        nowUseLocation,
+      </if>
+      <if test="nowUser != null">
+        nowUser,
+      </if>
+      <if test="startUseTime != null">
+        startUseTime,
+      </if>
+      <if test="endUseTime != null">
+        endUseTime,
+      </if>
+      <if test="usePlace != null">
+        usePlace,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="assetNumber != null">
+        #{assetNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="assetClass != null">
+        #{assetClass,jdbcType=VARCHAR},
+      </if>
+      <if test="assetName != null">
+        #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="manuFacturer != null">
+        #{manuFacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="buyTime != null">
+        #{buyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchaseValue != null">
+        #{purchaseValue,jdbcType=DOUBLE},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="nowUseLocation != null">
+        #{nowUseLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="nowUser != null">
+        #{nowUser,jdbcType=VARCHAR},
+      </if>
+      <if test="startUseTime != null">
+        #{startUseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endUseTime != null">
+        #{endUseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="usePlace != null">
+        #{usePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.javaboy.devicequery.model.Device">
+    update device
+    <set>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="assetNumber != null">
+        assetNumber = #{assetNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="assetClass != null">
+        assetClass = #{assetClass,jdbcType=VARCHAR},
+      </if>
+      <if test="assetName != null">
+        assetName = #{assetName,jdbcType=VARCHAR},
+      </if>
+      <if test="manuFacturer != null">
+        manuFacturer = #{manuFacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="buyTime != null">
+        buyTime = #{buyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchaseValue != null">
+        purchaseValue = #{purchaseValue,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null">
+        auditTime = #{auditTime,jdbcType=VARCHAR},
+      </if>
+      <if test="nowUseLocation != null">
+        nowUseLocation = #{nowUseLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="nowUser != null">
+        nowUser = #{nowUser,jdbcType=VARCHAR},
+      </if>
+      <if test="startUseTime != null">
+        startUseTime = #{startUseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endUseTime != null">
+        endUseTime = #{endUseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="usePlace != null">
+        usePlace = #{usePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.javaboy.devicequery.model.Device">
+    update device
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      assetNumber = #{assetNumber,jdbcType=VARCHAR},
+      assetClass = #{assetClass,jdbcType=VARCHAR},
+      assetName = #{assetName,jdbcType=VARCHAR},
+      manuFacturer = #{manuFacturer,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      buyTime = #{buyTime,jdbcType=TIMESTAMP},
+      purchaseValue = #{purchaseValue,jdbcType=INTEGER},
+      auditTime = #{auditTime,jdbcType=VARCHAR},
+      nowUseLocation = #{nowUseLocation,jdbcType=VARCHAR},
+      nowUser = #{nowUser,jdbcType=VARCHAR},
+      startUseTime = #{startUseTime,jdbcType=VARCHAR},
+      endUseTime = #{endUseTime,jdbcType=VARCHAR},
+      usePlace = #{usePlace,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
