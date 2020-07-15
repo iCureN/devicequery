@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class testSchedul {
 
     int i=1;
-    @Scheduled(cron = "${cron.timer}")
+//    @Scheduled(cron = "${cron.timer}")
     public void test(){
         System.out.println(i++);
     }
